@@ -4,17 +4,21 @@ const InputForm=(props)=>{
     const [enteredTitle,setTitle]=useState('');
     const [enteredDate,setDate]=useState('');
     const [enteredAmount,setAmount]=useState('');
+    const cancelHandler=()=>{
+        props.onCancel();
+    }
     const submitHandler=(event)=>{
         event.preventDefault();
         const expenseData={
             title:enteredTitle,
-            amount:enteredAmount,
+            amount:+enteredAmount,
             date:new Date(enteredDate),
         };
         props.onInputForm(expenseData);
         setTitle('');
         setDate('');
         setAmount('');
+        props.onCancel();
     }
     const changeHandler=(id,val)=>{
         if(id==='title'){
@@ -56,6 +60,7 @@ const InputForm=(props)=>{
         </div>
         <div className='new-expense__actions'> 
         <button type='submit'>Add expense</button>
+        <button onClick={cancelHandler}>cancel</button>
         </div>
         </form>
     );

@@ -2,6 +2,7 @@ import './ExpenseItem.css'
 import ExpenseDate from './ExpenseDate'
 function ExpenseItem(props){
     return(
+        <li>
         <div className="expense-item">
             <ExpenseDate date={props.expense.date}/>
             <div className="expense-item__description"> 
@@ -9,6 +10,7 @@ function ExpenseItem(props){
             <div className="expense-item__price">{props.expense.amount}</div>
             </div>
         </div>
+        </li>
     );
 }
 export default ExpenseItem;
